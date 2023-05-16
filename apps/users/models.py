@@ -40,3 +40,8 @@ class User(AbstractUser):
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
+ 
+    def save(self, *args, **kwargs):
+        if not self.wallet_address:
+            self.wallet_address = secrets.token_hex(6)
+        super().save(*args, **kwargs)
