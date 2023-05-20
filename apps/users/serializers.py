@@ -6,17 +6,14 @@ from apps.transfer.serializers import HistoryTransferSerializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User 
-        fields = ('id',  'username', 'email', 
-                  'phone_number', 'age','created_at'
+        fields = ('id',  'username', 'email', 'phone_number', 'age','created_at'
                   )
 
 class UserDetailSerializer(serializers.ModelSerializer):
     from_user = HistoryTransferSerializer(read_only=True, many=True)
     class Meta:
         model = User 
-        fields = ('id',  'username', 'email', 
-                  'phone_number', 'age', 'balance', 
-                  'wallet_address','created_at','from_user'
+        fields = ('id',  'username', 'email', 'phone_number', 'age', 'balance', 'wallet_address','created_at','from_user'
                   )
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -28,8 +25,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = User 
-        fields = ('id',  'username', 'email', 
-                  'phone_number', 'age','created_at','password', 'password2'
+        fields = ('id',  'username', 'email', 'phone_number', 'age','created_at','password', 'password2'
                   )
         
     def validate(self, attrs):

@@ -15,6 +15,7 @@ class UserAPIViewSet(GenericViewSet,
                      mixins.DestroyModelMixin):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (UserDetailSerializer, )
  
 
     def get_serializer_class(self):
